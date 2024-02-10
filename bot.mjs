@@ -43,7 +43,7 @@ export class Bot {
     this.bot.start((ctx) => {
       console.log(ctx.chat, 'ctx')
 
-      if (ctx.chat.type === 'group') {
+      if (ctx.chat.type === 'group' || ctx.chat.type === 'supergroup') {
 
         this.groupIdState.set(ctx.chat.id, 'active')
         console.log(this.groupIdState, 'groupIdState')
