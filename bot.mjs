@@ -1,24 +1,10 @@
+import dotenv from 'dotenv'
+import fs from 'fs'
 import {
   Telegraf,
 } from 'telegraf'
-import {
-  message
-} from 'telegraf/filters'
-import dotenv from 'dotenv'
-import fs from 'fs'
 
 dotenv.config()
-
-
-
-export const SendMessage = () => {
-  // send message on responsive
-
-
-}
-
-// Enable graceful stop
-
 
 export class Bot {
   groupIdState = new Map()
@@ -30,7 +16,7 @@ export class Bot {
     console.log(this.groupIdState, 'groupIdState message')
     this.groupIdState.forEach((value, key) => {
       if (value === 'active') {
-        this.bot.telegram.sendMessage(key, `${name} just joined to the minecraft server \n\`IP: 123.123.123.2\``, {
+        this.bot.telegram.sendMessage(key, `${name} just joined to the minecraft server \n\`IP: 49.12.127.213:25788\``, {
           parse_mode: 'Markdown'
         })
       }
@@ -62,11 +48,7 @@ export class Bot {
         this.groupIdState.set(ctx.chat.id, 'active')
         console.log(this.groupIdState, 'groupIdState')
       }
-      ctx.reply('Welcome!')
     })
-    this.bot.help((ctx) => ctx.reply('Send me a sticker'))
-    this.bot.on(message('sticker'), (ctx) => ctx.reply('👍'))
-    this.bot.hears('hi', (ctx) => ctx.reply('Hey there'))
     this.bot.launch()
 
     process.once('SIGINT', () => {
