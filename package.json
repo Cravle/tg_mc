@@ -1,0 +1,12 @@
+{
+  "name": "mc_telegram",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "fastify": "^4.26.0",
+    "telegraf": "^4.15.3"
+  }
+}
