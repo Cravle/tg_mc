@@ -2,8 +2,11 @@ import fastify from "fastify";
 import { Bot } from "./bot.mjs";
 
 const initRoutes = (app) => {
-  app.app.get("/:name", async (request, reply) => {
+  app.app.get("/sendTgMessage/:name", async (request, reply) => {
     const {name} = request.params
+
+    if(!name) return reply.code(400).send({error: 'Name is required'})
+
     console.log(name, 'name')
     app.bot.sendMessage(name);
     return { hello: "world" };
